@@ -64,4 +64,8 @@ class GameData {
 
   static int get challengesCount => challenges.length;
   static int get penaltiesCount => penalties.length;
+
+  static getChallenges() {
+    return List<String>.from(challenges);
+  }
 }

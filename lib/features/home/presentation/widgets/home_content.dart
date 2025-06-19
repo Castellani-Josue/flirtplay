@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../app/routes/app_routes.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/widgets/animated_button.dart';
@@ -70,9 +71,9 @@ class HomeContent extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  AppStrings.gameDescription,
+                  AppStrings.challengeTitle.replaceAll('\n', ' '),
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.white80,
+                    color: Colors.white70,
                     height: 1.5,
                   ),
                   textAlign: TextAlign.center,
@@ -96,7 +97,7 @@ class HomeContent extends StatelessWidget {
 
           // Bouton de démarrage
           AnimatedButton(
-            text: AppStrings.startGame,
+            text: AppStrings.playButton,
             onPressed: () => AppRoutes.navigateToGame(context),
             icon: Icons.play_arrow,
           ),
@@ -105,7 +106,7 @@ class HomeContent extends StatelessWidget {
 
           // Conseils
           Text(
-            AppStrings.homeHint,
+            AppStrings.homeSubtitle.replaceAll('\n', ' '),
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: Colors.white60,
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../domain/entities/game_result.dart';
 
 class ResultCard extends StatefulWidget {
@@ -106,17 +107,18 @@ class _ResultCardState extends State<ResultCard>
                   end: Alignment.bottomRight,
                   colors: widget.result.isSuccess
                       ? [
-                    AppColors.primary.withOpacity(0.9),
-                    AppColors.secondary.withOpacity(0.9),
+                    AppColors.purple.withOpacity(0.9),
+                    AppColors.pink.withOpacity(0.9),
+                    AppColors.orange.withOpacity(0.7),
                   ]
                       : [
-                    Colors.red.shade400.withOpacity(0.9),
-                    Colors.red.shade600.withOpacity(0.9),
+                    AppColors.error.withOpacity(0.9),
+                    AppColors.pink.withOpacity(0.8),
                   ],
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: (widget.result.isSuccess ? AppColors.primary : Colors.red)
+                    color: (widget.result.isSuccess ? AppColors.purple : AppColors.error)
                         .withOpacity(0.3),
                     blurRadius: 30,
                     spreadRadius: 5,
@@ -181,7 +183,7 @@ class _ResultCardState extends State<ResultCard>
             child: Icon(
               widget.result.isSuccess
                   ? Icons.emoji_events
-                  : Icons.favorite_border,
+                  : Icons.sentiment_dissatisfied,
               size: 50,
               color: Colors.white,
             ),
@@ -193,7 +195,7 @@ class _ResultCardState extends State<ResultCard>
 
   Widget _buildResultTitle() {
     return Text(
-      widget.result.isSuccess ? 'BRAVO ! 🎉' : 'GAGE TIME ! 😈',
+      widget.result.isSuccess ? AppStrings.successTitle : AppStrings.penaltyTitle,
       style: const TextStyle(
         color: Colors.white,
         fontSize: 28,
@@ -296,10 +298,10 @@ class _ResultCardState extends State<ResultCard>
           child: ElevatedButton(
             onPressed: widget.onPlayAgain,
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
+              backgroundColor: AppColors.white,
               foregroundColor: widget.result.isSuccess
-                  ? AppColors.primary
-                  : Colors.red.shade600,
+                  ? AppColors.purple
+                  : AppColors.error,
               elevation: 8,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
@@ -315,7 +317,7 @@ class _ResultCardState extends State<ResultCard>
                 ),
                 const SizedBox(width: 12),
                 Text(
-                  'Rejouer',
+                  AppStrings.buttonNext.replaceAll('DÉFI ', ''),
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -335,23 +337,23 @@ class _ResultCardState extends State<ResultCard>
             child: OutlinedButton(
               onPressed: widget.onShare,
               style: OutlinedButton.styleFrom(
-                foregroundColor: Colors.white,
+                foregroundColor: AppColors.white,
                 side: BorderSide(
-                  color: Colors.white.withOpacity(0.6),
+                  color: AppColors.white.withOpacity(0.6),
                   width: 2,
                 ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25),
                 ),
               ),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
                     Icons.share,
                     size: 20,
                   ),
-                  const SizedBox(width: 8),
+                  SizedBox(width: 8),
                   Text(
                     'Partager',
                     style: TextStyle(

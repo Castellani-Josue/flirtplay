@@ -1,9 +1,15 @@
+import 'package:flirtplay/features/game/domain/entities/challenge.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/widgets/gradient_background.dart';
 import '../../../../core/widgets/confetti_widget.dart';
 import '../../../../shared/data/game_data.dart';
+import '../../domain/entities/game_result.dart';
+import '../widgets/actions_buttons.dart';
+import '../widgets/challenge_card.dart';
+import '../widgets/progress_bar.dart';
+import '../widgets/result_card.dart';
 
 
 
@@ -17,17 +23,22 @@ class GamePage extends StatefulWidget {
 
 class _GamePageState extends State<GamePage> with TickerProviderStateMixin {
   int currentChallengeIndex = 0;
-  int totalChallenges = 3;
+  //int totalChallenges = 3;
   bool isShowingResult = false;
   bool hasSucceeded = false;
   String currentChallenge = '';
   String resultMessage = '';
   bool showConfetti = false;
+  Challenge challenge = GameData.getRandomChallenge() as Challenge;
+  int totalChallenges = GameData.getChallenges().length;
+
 
   late AnimationController _cardController;
   late Animation<double> _cardAnimation;
   late AnimationController _slideController;
   late Animation<Offset> _slideAnimation;
+  late GameResult currentResult;
+
 
   @override
   void initState() {
@@ -177,9 +188,11 @@ class _GamePageState extends State<GamePage> with TickerProviderStateMixin {
                         ],
                       ),
                       const SizedBox(height: 15),
-                      GameProgressBar(
-                        current: currentChallengeIndex + 1,
-                        total: totalChallenges,
+                      ProgressBar(
+                        currentStep: currentChallengeIndex + 1,
+                        totalSteps: totalChallenges,
+                        showStepNumbers: true,
+                        currentStepLabel: 'Défi ${currentChallengeIndex + 1}',
                       ),
                     ],
                   ),
@@ -202,13 +215,14 @@ class _GamePageState extends State<GamePage> with TickerProviderStateMixin {
                                   ? SlideTransition(
                                 position: _slideAnimation,
                                 child: ResultCard(
-                                  message: resultMessage,
-                                  isSuccess: hasSucceeded,
+                                  result: currentResult, // une instance de GameResult
+                                  onPlayAgain: _generateNewChallenge,
                                 ),
                               )
-                                  : ChallengeCard(
-                                challenge: currentChallenge,
-                                challengeNumber: currentChallengeIndex + 1,
+                                  :ChallengeCard(
+                                challenge: challenge,            // un vrai objet Challenge !
+                                currentIndex: currentChallengeIndex,    // un int
+                                totalChallenges:totalChallenges ,    // un int
                               ),
                             );
                           },
