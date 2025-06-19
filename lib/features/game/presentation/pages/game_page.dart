@@ -4,9 +4,7 @@ import '../../../../core/constants/app_strings.dart';
 import '../../../../core/widgets/gradient_background.dart';
 import '../../../../core/widgets/confetti_widget.dart';
 import '../../../../shared/data/game_data.dart';
-import '../widgets/challenge_card.dart';
-import '../widgets/result_card.dart';
-import '../widgets/progress_bar.dart';
+
 
 
 

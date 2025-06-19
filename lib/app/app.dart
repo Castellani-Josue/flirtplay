@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../features/home/presentation/pages/home_page.dart';
+import 'package:flirtplay/features/home/presentation/pages/home_page.dart';
 
 
 class FlirtPlayApp extends StatelessWidget
@@ -16,7 +15,7 @@ class FlirtPlayApp extends StatelessWidget
         primarySwatch: Colors.pink,
         fontFamily: 'Poppins',
       ),
-      home: const HomeScreen(),
+      home: const HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
