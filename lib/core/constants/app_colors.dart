@@ -6,6 +6,9 @@ class AppColors {
   static const Color pink = Color(0xFFE91E63);
   static const Color orange = Color(0xFFFF9800);
   static const Color deepPurple = Color(0xFF673AB7);
+  static const Color accent = Color(0xFFE91E63);
+  static const Color surface = Color(0xFF424242);
+
 
   // Couleurs pour les gradients
   static const List<Color> homeGradient = [
