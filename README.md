@@ -1,11 +1,8 @@
 # flirtplay
 
+📁 **Structure du dossier `lib/`**
 
-
-
-
-
-📁 Structure des dossiers
+```text
 lib/
 ├── main.dart
 ├── app/
@@ -21,7 +18,7 @@ lib/
 │   │   └── extensions.dart         # Extensions utiles
 │   └── widgets/
 │       ├── animated_button.dart    # Bouton avec animation
-│       ├── gradient_background.dart # Background gradient
+│       ├── gradient_background.dart# Background gradient
 │       └── confetti_widget.dart    # Widget confettis
 ├── features/
 │   ├── home/
@@ -61,11 +58,9 @@ lib/
 │               ├── progress_bar.dart
 │               └── action_buttons.dart
 └── shared/
-├── data/
-│   └── game_data.dart          # Données des défis/gages
-└── services/
-└── animation_service.dart   # Service pour animations
-
-
-
+    ├── data/
+    │   └── game_data.dart           # Données des défis/gages
+    └── services/
+        └── animation_service.dart  # Service pour animations
+```
 
